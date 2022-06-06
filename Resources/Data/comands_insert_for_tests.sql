@@ -145,7 +145,7 @@ INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id)
 		'Juliano Caetano',
 		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
 		'Humano',
-		'Image',
+		'1',
 		'0',
 		'1'
 	);
@@ -211,4 +211,372 @@ INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id)
 		'FURT',
 		'2',
 		'1'
+	);
+
+
+
+	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+	VALUES (
+		'Antonio bandeiras',
+		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
+		'Humano',
+		'2',
+		'0',
+		'1'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FOR',
+		'4',
+		'2'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'DES',
+		'2',
+		'2'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'CON',
+		'4',
+		'2'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'INT',
+		'2',
+		'2'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'PER',
+		'2',
+		'2'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FV',
+		'2',
+		'2'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMF',
+		'3',
+		'2'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMB',
+		'3',
+		'2'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'FURT',
+		'2',
+		'2'
+	);
+
+	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+	VALUES (
+		'Gabiru tempest',
+		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
+		'Humano',
+		'3',
+		'0',
+		'1'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FOR',
+		'4',
+		'3'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'DES',
+		'2',
+		'3'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'CON',
+		'4',
+		'3'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'INT',
+		'2',
+		'3'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'PER',
+		'2',
+		'3'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FV',
+		'2',
+		'3'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMF',
+		'3',
+		'3'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMB',
+		'3',
+		'3'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'FURT',
+		'2',
+		'3'
+	);
+
+	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+	VALUES (
+		'Surinami',
+		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
+		'Humano',
+		'4',
+		'0',
+		'1'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FOR',
+		'4',
+		'4'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'DES',
+		'2',
+		'4'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'CON',
+		'4',
+		'4'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'INT',
+		'2',
+		'4'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'PER',
+		'2',
+		'4'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FV',
+		'2',
+		'4'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMF',
+		'3',
+		'4'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMB',
+		'3',
+		'4'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'FURT',
+		'2',
+		'4'
+	);
+
+
+	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+	VALUES (
+		'Sucablat',
+		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
+		'Humano',
+		'5',
+		'0',
+		'1'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FOR',
+		'4',
+		'5'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'DES',
+		'2',
+		'5'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'CON',
+		'4',
+		'5'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'INT',
+		'2',
+		'5'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'PER',
+		'2',
+		'5'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FV',
+		'2',
+		'5'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMF',
+		'3',
+		'5'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMB',
+		'3',
+		'5'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'FURT',
+		'2',
+		'5'
+	);
+
+	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+	VALUES (
+		'Rexona',
+		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
+		'Humano',
+		'4',
+		'0',
+		'1'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FOR',
+		'4',
+		'6'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'DES',
+		'2',
+		'6'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'CON',
+		'4',
+		'6'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'INT',
+		'2',
+		'6'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'PER',
+		'2',
+		'6'
+	);
+
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
+	VALUES (
+		'FV',
+		'2',
+		'6'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMF',
+		'3',
+		'6'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'ARMB',
+		'3',
+		'6'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'FURT',
+		'2',
+		'6'
 	);

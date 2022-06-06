@@ -21,34 +21,59 @@ namespace MasmorraDoMestre.View
         Utilities utilities = new Utilities();
         Conection con = new Conection();
 
+        int[] currentSystem;
+
+        private void GameList_Load(object sender, EventArgs e)
+        {
+            utilities.FontDefine(this);
+            utilities.FontDefine(configPanel);
+            utilities.FontDefine(deletePanel);
+            utilities.FontDefine(systemInfo);
+            utilities.FontDefine(joinPanel);
+        }
+
+
         public GameList()
         {
             InitializeComponent();
             InitializeList();
         }
 
-        private void GameList_Load(object sender, EventArgs e)
+        private int[] CurrentSystem
         {
-            utilities.FontDefine(this);
-            utilities.FontDefine(configPanel);
-            utilities.FontDefine(selectPanel);
-            utilities.FontDefine(deletePanel);
-            utilities.FontDefine(systemInfo);
-            utilities.FontDefine(joinPanel);
+            set{
+                currentSystem = value;
+
+                DataRow table = con.getGame(value[1]).Rows[0];
+
+                this.nameSystem.Text = table["Name"].ToString();
+                this.descriptionSystem.Text = table["Description"].ToString();
+                this.dateSystem.Text = utilities.formatDate(
+                    table["Date"].ToString(),
+                    "/",
+                    new int[] { 1, 2, 3 }
+                );
+            }
         }
 
         private void item_Click(int position, int Id)
         {
-            Console.WriteLine(position.ToString() + Id.ToString());
+            int i = 0;
+            foreach (Control c in this.lista.Controls)
+            {
+                c.BackColor = (position == i)?Color.FromArgb(200, 0, 0): Color.FromArgb(20, 20, 20);
+                c.ForeColor = (position == i) ? Color.Black : Color.White;
+                i++;
+            }
+
+            CurrentSystem = new int[] { position, Id };
         }
 
-        private void teste(int i, DataRow Data , int locationY, int width)
+        private void createList(int i, DataRow Data , int locationY, int width)
         {
             Panel item = new Panel();
             Label text = new Label();
             Label date = new Label();
-            PrivateFontCollection pf = new PrivateFontCollection();
-            pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\Minecraftia-Regular.ttf"));
 
             EventHandler onClickEvent = new EventHandler((sender, EventArgs) => { 
                 item_Click(i, int.Parse(Data["Id"].ToString()) ); 
@@ -75,12 +100,15 @@ namespace MasmorraDoMestre.View
             item.Size = new Size(width, 50);
             item.TabIndex = 0;
             item.Click += onClickEvent;
+            item.Paint += new PaintEventHandler((sender, EventArgs) => {
+                utilities.FontDefine(item);
+            });
 
             // 
             // text
             // 
             text.Anchor = AnchorStyles.Left;
-            text.Font = new Font(pf.Families[0], 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            text.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             text.Location = new Point(15, 10);
             text.Margin = new Padding(0);
             text.Name = "text";
@@ -94,7 +122,7 @@ namespace MasmorraDoMestre.View
             // date
             // 
             date.Anchor = AnchorStyles.Left;
-            date.Font = new Font(pf.Families[0], 6F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            date.Font = new Font("Microsoft Sans Serif", 6F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             date.Location = new Point(width == 508 ? 349 : 330, 10);
             date.Margin = new Padding(0);
             date.Name = "date";
@@ -109,7 +137,7 @@ namespace MasmorraDoMestre.View
 
         private void InitializeList()
         {
-            DataTable table = con.getAll();
+            DataTable table = con.getGame();
             int locationY = 3;
             int size = table.Rows.Count;
             int width = size > 8 ? 491 : 508;
@@ -117,24 +145,15 @@ namespace MasmorraDoMestre.View
 
             for (int i = 0; i < size; i++)
             {
-
-                teste(i, table.Rows[i], locationY, width);
+                createList(i, table.Rows[i], locationY, width);
 
                 locationY += 53;
             }
 
-            Console.WriteLine(JsonConvert.SerializeObject(con.getAll()));
-            Console.WriteLine(con.getAll().Rows[0]["Properties_List"]);
-        }
-
-        private void terste(object sender, EventArgs e)
-        {
-
-            
-
-            Console.WriteLine(JsonConvert.SerializeObject(con.getAll()));
-            Console.WriteLine(con.getAll().Rows[0]["Properties_List"]) ;
+            item_Click( 0, int.Parse(table.Rows[0]["Id"].ToString()));
 
         }
+
+        private void joinInSystem_Click(object sender, EventArgs e) { utilities.GoMenu(this, (object obj) => { Application.Run(new SystemForm(currentSystem[1])); }); }
     }
 }

@@ -20,7 +20,7 @@ namespace MasmorraDoMestre.Model
         {
             currentWindow.Close();
             window = new Thread(start);
-            window.SetApartmentState(ApartmentState.STA);
+            window.SetApartmentState(ApartmentState.MTA);
             window.Start();
         }
 
@@ -57,16 +57,32 @@ namespace MasmorraDoMestre.Model
             return value;
         }
 
+        public Image getImagePrefile(int v)
+        {
+            switch (v)
+            {
+                case 1: return global::MasmorraDoMestre.Properties.Resources.image1; break;
+                case 2: return global::MasmorraDoMestre.Properties.Resources.image2; break;
+                case 3: return global::MasmorraDoMestre.Properties.Resources.image3; break;
+                case 4: return global::MasmorraDoMestre.Properties.Resources.image4; break;
+                default: return global::MasmorraDoMestre.Properties.Resources.image5; break;
+            };
+        }
+
         public void FontDefine(Panel e)
         {
             try
             {
                 PrivateFontCollection pf = new PrivateFontCollection();
                 pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\Minecraftia-Regular.ttf"));
+                pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\alagard.ttf"));
                 foreach (Control c in e.Controls)
                 {
-                    if (c.Font.Name == "Microsoft Sans Serif") c.Font = new Font(pf.Families[0], c.Font.Size, c.Font.Style);
+                    if (c.Font.Name == "Microsoft Sans Serif") c.Font = new Font(pf.Families[1], c.Font.Size, c.Font.Style);
+                    if (c.Font.Name == "Microsoft Tai Le") c.Font = new Font(pf.Families[0], c.Font.Size, c.Font.Style);
                 }
+
+                pf = null;
             }
             catch { }
         }
@@ -77,9 +93,11 @@ namespace MasmorraDoMestre.Model
             {
                 PrivateFontCollection pf = new PrivateFontCollection();
                 pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\Minecraftia-Regular.ttf"));
+                pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\alagard.ttf"));
                 foreach (Control c in e.Controls)
                 {
-                    if (c.Font.Name == "Microsoft Sans Serif") c.Font = new Font(pf.Families[0], c.Font.Size, c.Font.Style);
+                    if (c.Font.Name == "Microsoft Sans Serif") c.Font = new Font(pf.Families[1], c.Font.Size, c.Font.Style);
+                    if (c.Font.Name == "Microsoft Tai Le") c.Font = new Font(pf.Families[0], c.Font.Size, c.Font.Style);
                 }
             }
             catch { }

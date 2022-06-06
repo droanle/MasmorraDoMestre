@@ -120,8 +120,8 @@ namespace MasmorraDoMestre.Controller
         {
             con.Close();
         }
-        
-        public DataTable getAll()
+
+        private DataTable querySelect(string sqlCommand)
         {
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
@@ -131,11 +131,11 @@ namespace MasmorraDoMestre.Controller
                 conectar();
                 using (var cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Games";
+                    cmd.CommandText = sqlCommand;
                     da = new SQLiteDataAdapter(cmd.CommandText, con);
                     da.Fill(dt);
                     desconectar();
-                    return dt ;
+                    return dt;
                 }
             }
             catch (Exception ex)
@@ -143,6 +143,26 @@ namespace MasmorraDoMestre.Controller
                 Console.WriteLine(ex.Message);
                 throw ex;
             }
+        }
+
+        public DataTable getGame()
+        {
+            return querySelect("SELECT * FROM Games");
+        }
+
+        public DataTable getGame(int i)
+        {
+            return querySelect("SELECT * FROM Games WHERE Id=" + i);
+        }
+
+        public DataTable getSheet()
+        {
+            return querySelect("SELECT * FROM Sheets");
+        }
+
+        public DataTable getSheet(int i)
+        {
+            return querySelect("SELECT * FROM Sheets WHERE Source_Id=" + i);
         }
     }
 }

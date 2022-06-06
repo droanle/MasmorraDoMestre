@@ -31,5 +31,10 @@ namespace MasmorraDoMestre
         {
 
         }
+
+        private void text_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
