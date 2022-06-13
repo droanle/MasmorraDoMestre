@@ -20,23 +20,24 @@ namespace MasmorraDoMestre.View
     {
         Utilities utilities = new Utilities();
         Conection con = new Conection();
+        PrivateFontCollection pf = null;
 
         int[] currentSystem;
 
-        private void GameList_Load(object sender, EventArgs e)
+        public GameList(PrivateFontCollection pf)
         {
-            utilities.FontDefine(this);
-            utilities.FontDefine(configPanel);
-            utilities.FontDefine(deletePanel);
-            utilities.FontDefine(systemInfo);
-            utilities.FontDefine(joinPanel);
-        }
-
-
-        public GameList()
-        {
+            this.pf = pf;
             InitializeComponent();
             InitializeList();
+        }
+
+        private void GameList_Load(object sender, EventArgs e)
+        {
+            utilities.FontSet(this, pf);
+            utilities.FontSet(configPanel, pf);
+            utilities.FontSet(deletePanel, pf);
+            utilities.FontSet(systemInfo, pf);
+            utilities.FontSet(joinPanel, pf);
         }
 
         private int[] CurrentSystem
@@ -61,7 +62,7 @@ namespace MasmorraDoMestre.View
             int i = 0;
             foreach (Control c in this.lista.Controls)
             {
-                c.BackColor = (position == i)?Color.FromArgb(200, 0, 0): Color.FromArgb(20, 20, 20);
+                c.BackColor = (position == i)? Color.FromArgb(200, 0, 0) : Color.FromArgb(20, 20, 20);
                 c.ForeColor = (position == i) ? Color.Black : Color.White;
                 i++;
             }
@@ -78,6 +79,7 @@ namespace MasmorraDoMestre.View
             EventHandler onClickEvent = new EventHandler((sender, EventArgs) => { 
                 item_Click(i, int.Parse(Data["Id"].ToString()) ); 
             });
+
             String dateText = utilities.formatDate(
                 Data["Date"].ToString(),
                 "/",
@@ -101,7 +103,7 @@ namespace MasmorraDoMestre.View
             item.TabIndex = 0;
             item.Click += onClickEvent;
             item.Paint += new PaintEventHandler((sender, EventArgs) => {
-                utilities.FontDefine(item);
+                utilities.FontSet(item, pf);
             });
 
             // 
@@ -142,7 +144,6 @@ namespace MasmorraDoMestre.View
             int size = table.Rows.Count;
             int width = size > 8 ? 491 : 508;
 
-
             for (int i = 0; i < size; i++)
             {
                 createList(i, table.Rows[i], locationY, width);
@@ -150,10 +151,45 @@ namespace MasmorraDoMestre.View
                 locationY += 53;
             }
 
-            item_Click( 0, int.Parse(table.Rows[0]["Id"].ToString()));
+            if (size > 0) item_Click(0, int.Parse(table.Rows[0]["Id"].ToString()));
+            else systemInfoHider();
 
         }
 
-        private void joinInSystem_Click(object sender, EventArgs e) { utilities.GoMenu(this, (object obj) => { Application.Run(new SystemForm(currentSystem[1])); }); }
+        private void systemInfoHider()
+        {
+            if (!joinPanel.Visible)
+            {
+                joinPanel.Hide();
+                dateSystem.Hide();
+                nameSystem.Hide();
+                descriptionSystem.Hide();
+            }
+            else
+            {
+                joinPanel.Show();
+                dateSystem.Show();
+                nameSystem.Show();
+                descriptionSystem.Show();
+            }
+
+        }
+
+        private void joinInSystem_Click(object sender, EventArgs e) { 
+            utilities.GoMenu(this, (object obj) => {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new SystemForm(currentSystem[1], pf)); 
+            }); 
+        }
+
+        private void backToMain_Click(object sender, EventArgs e)
+        {
+            utilities.GoMenu(this, (object obj) => {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Main(pf));
+            });
+        }
     }
 }

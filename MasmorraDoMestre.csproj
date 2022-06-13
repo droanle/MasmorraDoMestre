@@ -47,6 +47,11 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.NonGeneric, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.NonGeneric.4.3.0\lib\net46\System.Collections.NonGeneric.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -79,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Conection.cs" />
+    <Compile Include="Model\PropertiesList.cs" />
     <Compile Include="Model\Utilities.cs" />
     <Compile Include="View\Confg.cs">
       <SubType>Form</SubType>
@@ -106,6 +112,12 @@
     <Compile Include="testes.Designer.cs">
       <DependentUpon>testes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Sheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Sheet.Designer.cs">
+      <DependentUpon>Sheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +142,9 @@
     </Compile>
     <EmbeddedResource Include="testes.resx">
       <DependentUpon>testes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sheet.resx">
+      <DependentUpon>Sheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SystemForm.resx">
       <DependentUpon>SystemForm.cs</DependentUpon>

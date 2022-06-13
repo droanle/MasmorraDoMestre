@@ -2,21 +2,21 @@ INSERT INTO Games ( Name, Description, Properties_List )
 	VALUES (
 		'AFMBE',
 		'Sistema de zumbis com ambientação nos anos 80, os zumbis podem ser tanto normais com paranormais.',
-		'[{ "name":"Atributos", "description":"blablabla", "abbreviation":"ATRIB"}, { "name":"Prericias", "description":"blablabla", "abbreviation":"PRER"}]'
+		'{"List":[{ "name":"Atributos", "description":"blablabla", "abbreviation":"ATRIB"}, { "name":"Prericias", "description":"blablabla", "abbreviation":"PRER"}]}'
 	);
 
 INSERT INTO Games ( Name, Description, Properties_List )
 	VALUES (
 		'Daemon Arkanun',
 		'Sistema com magia, habilidade e poderes paranormais, combate, criaturas estranhas e múltiplas dimensões baseadas no inferno de dante.',
-		'[{ "name":"Atributos", "description":"blablabla", "abbreviation":"ATRIB"}, { "name":"Prericias", "description":"blablabla", "abbreviation":"PRER"}]'
+		'{"List":[{ "name":"Atributos", "description":"blablabla", "abbreviation":"ATRIB"}, { "name":"Prericias", "description":"blablabla", "abbreviation":"PRER"}]}'
 	);
 
 INSERT INTO Games ( Name, Description, Properties_List ) 
 	VALUES (
 		'Dragon Age',
 		'Sistema de fantasia medieval, com classes e definição de histórias bem distintas.',
-		'[{ "name":"Atributos", "description":"blablabla", "abbreviation":"ATRIB"}, { "name":"Prericias", "description":"blablabla", "abbreviation":"PRER"}]'
+		'{"List":[{ "name":"Atributos", "description":"blablabla", "abbreviation":"ATRIB"}, { "name":"Prericias", "description":"blablabla", "abbreviation":"PRER"}]}'
 	);
 
 
@@ -150,72 +150,91 @@ INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id)
 		'1'
 	);
 
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PV',
+		'48/48',
+		'1'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PR',
+		'35/35',
+		'1'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'AGIL',
+		'9/9',
+		'1'
+	);
+
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FOR',
-		'4',
+		'3',
 		'1'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'DES',
-		'2',
+		'3',
 		'1'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'CON',
-		'4',
+		'3',
 		'1'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'INT',
-		'2',
+		'3',
 		'1'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'PER',
-		'2',
+		'3',
 		'1'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FV',
-		'2',
+		'3',
 		'1'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMF',
 		'3',
 		'1'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMB',
 		'3',
 		'1'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FURT',
-		'2',
+		'3',
 		'1'
 	);
 
-
-
-	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
 	VALUES (
 		'Antonio bandeiras',
 		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
@@ -225,70 +244,91 @@ INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id)
 		'1'
 	);
 
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PV',
+		'48/48',
+		'2'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PR',
+		'35/35',
+		'2'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'AGIL',
+		'9/9',
+		'2'
+	);
+
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FOR',
-		'4',
+		'3',
 		'2'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'DES',
-		'2',
+		'3',
 		'2'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'CON',
-		'4',
+		'3',
 		'2'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'INT',
-		'2',
+		'3',
 		'2'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'PER',
-		'2',
+		'3',
 		'2'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FV',
-		'2',
+		'3',
 		'2'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMF',
 		'3',
 		'2'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMB',
 		'3',
 		'2'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FURT',
-		'2',
+		'3',
 		'2'
 	);
 
-	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
 	VALUES (
 		'Gabiru tempest',
 		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
@@ -298,70 +338,91 @@ INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id)
 		'1'
 	);
 
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PV',
+		'48/48',
+		'3'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PR',
+		'35/35',
+		'3'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'AGIL',
+		'9/9',
+		'3'
+	);
+
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FOR',
-		'4',
+		'3',
 		'3'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'DES',
-		'2',
+		'3',
 		'3'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'CON',
-		'4',
+		'3',
 		'3'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'INT',
-		'2',
+		'3',
 		'3'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'PER',
-		'2',
+		'3',
 		'3'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FV',
-		'2',
+		'3',
 		'3'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMF',
 		'3',
 		'3'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMB',
 		'3',
 		'3'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FURT',
-		'2',
+		'3',
 		'3'
 	);
 
-	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
 	VALUES (
 		'Surinami',
 		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
@@ -371,71 +432,91 @@ INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id)
 		'1'
 	);
 
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PV',
+		'48/48',
+		'4'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PR',
+		'35/35',
+		'4'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'AGIL',
+		'9/9',
+		'4'
+	);
+
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FOR',
-		'4',
+		'3',
 		'4'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'DES',
-		'2',
+		'3',
 		'4'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'CON',
-		'4',
+		'3',
 		'4'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'INT',
-		'2',
+		'3',
 		'4'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'PER',
-		'2',
+		'3',
 		'4'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FV',
-		'2',
+		'3',
 		'4'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMF',
 		'3',
 		'4'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMB',
 		'3',
 		'4'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FURT',
-		'2',
+		'3',
 		'4'
 	);
 
-
-	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
 	VALUES (
 		'Sucablat',
 		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
@@ -443,72 +524,93 @@ INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id)
 		'5',
 		'0',
 		'1'
+	); 
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PV',
+		'48/48',
+		'5'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PR',
+		'35/35',
+		'5'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'AGIL',
+		'9/9',
+		'5'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FOR',
-		'4',
+		'3',
 		'5'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'DES',
-		'2',
+		'3',
 		'5'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'CON',
-		'4',
+		'3',
 		'5'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'INT',
-		'2',
+		'3',
 		'5'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'PER',
-		'2',
+		'3',
 		'5'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FV',
-		'2',
+		'3',
 		'5'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMF',
 		'3',
 		'5'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMB',
 		'3',
 		'5'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FURT',
-		'2',
+		'3',
 		'5'
 	);
 
-	INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
+INSERT INTO Sheets ( Name, Description, Type, Image, Player, Source_Id) 
 	VALUES (
 		'Rexona',
 		'É Chefe de Segurança, foi ex-militar e é focado e determinado.',
@@ -518,65 +620,87 @@ INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id)
 		'1'
 	);
 
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PV',
+		'48/48',
+		'2'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'PR',
+		'35/35',
+		'2'
+	);
+
+INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+	VALUES (
+		'AGIL',
+		'9/9',
+		'2'
+	);
+
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FOR',
-		'4',
+		'3',
 		'6'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'DES',
-		'2',
+		'3',
 		'6'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'CON',
-		'4',
+		'3',
 		'6'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'INT',
-		'2',
+		'3',
 		'6'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'PER',
-		'2',
+		'3',
 		'6'
 	);
 
 INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FV',
-		'2',
+		'3',
 		'6'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMF',
 		'3',
 		'6'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'ARMB',
 		'3',
 		'6'
 	);
 
-INSERT INTO SecAttributesValue ( Id_Attributes, Value, Owner_Id) 
+INSERT INTO PropertiesValue ( Id_Properties, Value, Owner_Id) 
 	VALUES (
 		'FURT',
-		'2',
+		'3',
 		'6'
 	);
+

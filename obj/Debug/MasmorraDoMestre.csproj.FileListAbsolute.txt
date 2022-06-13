@@ -30,3 +30,4 @@ D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\bin\Debug\System.Data.SQLite.xml
 D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\bin\Debug\Newtonsoft.Json.dll
 D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\bin\Debug\Newtonsoft.Json.xml
 D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\obj\Debug\MasmorraDoMestre.View.SystemForm.resources
+D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\obj\Debug\MasmorraDoMestre.View.Sheet.resources

@@ -36,12 +36,15 @@
             this.addSheetLabel = new System.Windows.Forms.Label();
             this.addSheetPlus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.backPanel = new System.Windows.Forms.Panel();
             this.backLabel = new System.Windows.Forms.Label();
             this.systemInfos.SuspendLayout();
             this.sheetsList.SuspendLayout();
             this.addSheet.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.backPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,12 +139,42 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.backPanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 512);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(784, 49);
             this.panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BackgroundImage = global::MasmorraDoMestre.Properties.Resources.botão_1_png;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel2.Location = new System.Drawing.Point(460, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(10);
+            this.panel2.Size = new System.Drawing.Size(170, 39);
+            this.panel2.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(10, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "INICIAR CONBATE";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backPanel
             // 
@@ -151,7 +184,7 @@
             this.backPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.backPanel.Controls.Add(this.backLabel);
             this.backPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.backPanel.Location = new System.Drawing.Point(331, 5);
+            this.backPanel.Location = new System.Drawing.Point(165, 5);
             this.backPanel.Name = "backPanel";
             this.backPanel.Padding = new System.Windows.Forms.Padding(10);
             this.backPanel.Size = new System.Drawing.Size(121, 39);
@@ -164,13 +197,13 @@
             this.backLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.backLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.backLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.backLabel.ForeColor = System.Drawing.Color.White;
             this.backLabel.Location = new System.Drawing.Point(10, 10);
             this.backLabel.Margin = new System.Windows.Forms.Padding(0);
             this.backLabel.Name = "backLabel";
             this.backLabel.Size = new System.Drawing.Size(101, 19);
             this.backLabel.TabIndex = 4;
-            this.backLabel.Text = "<- VOLTAR";
+            this.backLabel.Text = "VOLTAR";
             this.backLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.backLabel.Click += new System.EventHandler(this.backToGameList_Click);
             // 
@@ -191,6 +224,7 @@
             this.sheetsList.ResumeLayout(false);
             this.addSheet.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.backPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -208,5 +242,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel backPanel;
         private System.Windows.Forms.Label backLabel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -164,5 +164,66 @@ namespace MasmorraDoMestre.Controller
         {
             return querySelect("SELECT * FROM Sheets WHERE Source_Id=" + i);
         }
+
+        public DataRow getSheetTarget(int i)
+        {
+            return querySelect("SELECT * FROM Sheets WHERE Id=" + i).Rows[0];
+        }
+
+        public DataTable getAttributes(int i)
+        {
+            return querySelect("SELECT I.*, V.Value FROM SecAttributes I INNER JOIN SecAttributesValue V ON(I.Id = V.Id_Attributes) WHERE V.Owner_Id = " + i);         
+        }
+
+        public DataTable getProperties(int i, String Propertie_Type )
+        {
+            return querySelect("SELECT I.*, V.Value FROM Properties I INNER JOIN PropertiesValue V ON(I.Id = V.Id_Properties) WHERE V.Owner_Id = " + i + " AND I.Propertie_Type = '" + Propertie_Type + "'");
+        }
+
+        public String getProperties_List(int i)
+        {
+            return querySelect("SELECT Properties_List FROM Games WHERE Id=" + i).Rows[0]["Properties_List"].ToString();
+        }
+
+        public Boolean setPropertiesValue(int value, int OwnerId, String IdProperties)
+        {
+            try
+            {
+                using (var cmd = con.CreateCommand())
+                {
+                    conectar();
+                    cmd.CommandText = "UPDATE PropertiesValue SET Value=@Value WHERE Owner_Id=@OwnerId AND Id_Properties=@IdProperties ;";
+                    cmd.Parameters.AddWithValue("@Value", value);
+                    cmd.Parameters.AddWithValue("@OwnerId", OwnerId);
+                    cmd.Parameters.AddWithValue("@IdProperties", IdProperties);
+                    cmd.ExecuteNonQuery();
+                    desconectar();
+                }
+
+                return true;
+            }
+            catch (Exception ex) { desconectar(); return false; }
+        }
+
+        public Boolean setSecAttributesValue(string value, int OwnerId, string IdAttributes)
+        {
+            try
+            {
+                using (var cmd = con.CreateCommand())
+                {
+                    conectar();
+                    cmd.CommandText = "UPDATE SecAttributesValue SET Value=@Value WHERE Owner_Id=@OwnerId AND Id_Attributes=@IdAttributes ;";
+                    cmd.Parameters.AddWithValue("@Value", value);
+                    cmd.Parameters.AddWithValue("@OwnerId", OwnerId);
+                    cmd.Parameters.AddWithValue("@IdAttributes", IdAttributes);
+                    cmd.ExecuteNonQuery();
+                    desconectar();
+                }
+
+                return true;
+            }
+            catch (Exception ex) { desconectar(); return false; }
+        }
+
     }
 }

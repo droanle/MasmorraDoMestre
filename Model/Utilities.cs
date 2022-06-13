@@ -69,38 +69,50 @@ namespace MasmorraDoMestre.Model
             };
         }
 
-        public void FontDefine(Panel e)
+        public PrivateFontCollection FontDefine()
         {
+            PrivateFontCollection pf = new PrivateFontCollection();
             try
             {
-                PrivateFontCollection pf = new PrivateFontCollection();
                 pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\Minecraftia-Regular.ttf"));
                 pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\alagard.ttf"));
-                foreach (Control c in e.Controls)
-                {
-                    if (c.Font.Name == "Microsoft Sans Serif") c.Font = new Font(pf.Families[1], c.Font.Size, c.Font.Style);
-                    if (c.Font.Name == "Microsoft Tai Le") c.Font = new Font(pf.Families[0], c.Font.Size, c.Font.Style);
-                }
-
-                pf = null;
+                
+                return pf;
             }
-            catch { }
+            catch { return null; }
         }
 
-        public void FontDefine(Form e)
+        public void FontSet(Panel e, PrivateFontCollection pf)
         {
-            try
-            {
-                PrivateFontCollection pf = new PrivateFontCollection();
-                pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\Minecraftia-Regular.ttf"));
-                pf.AddFontFile((Path.GetFullPath(@"..\..\Resources\Fonts") + @"\alagard.ttf"));
-                foreach (Control c in e.Controls)
+            if (pf != null)
+                try
                 {
-                    if (c.Font.Name == "Microsoft Sans Serif") c.Font = new Font(pf.Families[1], c.Font.Size, c.Font.Style);
-                    if (c.Font.Name == "Microsoft Tai Le") c.Font = new Font(pf.Families[0], c.Font.Size, c.Font.Style);
+                    foreach (Control c in e.Controls)
+                    {
+                        if (c.Font.Name == "Microsoft Sans Serif") c.Font = new Font(pf.Families[1], c.Font.Size, c.Font.Style);
+                        if (c.Font.Name == "Microsoft Tai Le") c.Font = new Font(pf.Families[0], c.Font.Size, c.Font.Style);
+                    }
+
+                    pf = null;
                 }
-            }
-            catch { }
+                catch { }
         }
+
+        public void FontSet(Form e, PrivateFontCollection pf)
+        {
+            if (pf != null)
+                try
+                {
+                    foreach (Control c in e.Controls)
+                    {
+                        if (c.Font.Name == "Microsoft Sans Serif") c.Font = new Font(pf.Families[1], c.Font.Size, c.Font.Style);
+                        if (c.Font.Name == "Microsoft Tai Le") c.Font = new Font(pf.Families[0], c.Font.Size, c.Font.Style);
+                    }
+
+                    pf = null;
+                }
+                catch { }
+        }
+
     }
 }

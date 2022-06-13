@@ -36,5 +36,35 @@ namespace MasmorraDoMestre
         {
 
         }
+
+        private void date_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void propertiesPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void barra_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alterButton_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void eValueTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

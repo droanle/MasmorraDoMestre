@@ -17,23 +17,31 @@ namespace MasmorraDoMestre.View
     public partial class Main : Form
     {
         Utilities utilities = new Utilities();
+        PrivateFontCollection pf = null;
 
-        public Main()
+        public Main(PrivateFontCollection pf)
         {
+            this.pf = pf;
+         
             InitializeComponent();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            utilities.FontDefine(this);
+            utilities.FontSet(this, pf);
         }
 
         private void joinPanel_Paint(object sender, PaintEventArgs e)
         {
-            utilities.FontDefine(joinPanel);
+            utilities.FontSet(joinPanel, pf);
         }
 
-        private void joinPanel_Click(object sender, EventArgs e) { utilities.GoMenu(this, (object obj) => { Application.Run(new GameList()); }); }
+        private void joinPanel_Click(object sender, EventArgs e) { utilities.GoMenu(this, (object obj) => {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new GameList(pf)); 
+            }); 
+        }
 
     }
 }

@@ -91,8 +91,8 @@
             this.join.BackColor = System.Drawing.Color.Transparent;
             this.join.Cursor = System.Windows.Forms.Cursors.Hand;
             this.join.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.join.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.join.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.join.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.join.ForeColor = System.Drawing.Color.White;
             this.join.Location = new System.Drawing.Point(10, 10);
             this.join.Margin = new System.Windows.Forms.Padding(0);
             this.join.Name = "join";

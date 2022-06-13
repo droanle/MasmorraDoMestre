@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,26 +19,26 @@ namespace MasmorraDoMestre.View
 
         Utilities utilities = new Utilities();
         Conection con = new Conection();
-        int idSystem;
+        PrivateFontCollection pf = null;
+        int IdGame;
 
-        public SystemForm(int idSystem)
+        public SystemForm(int IdGame, PrivateFontCollection pf)
         {
-            this.idSystem = idSystem;
+            this.IdGame = IdGame;
+            this.pf = pf;
             InitializeComponent();
             InitializeList();
         }
 
         private void SystemForm_Load(object sender, EventArgs e)
         {
-            utilities.FontDefine(this);
-            utilities.FontDefine(sheetsList);
-            utilities.FontDefine(addSheet);
-            utilities.FontDefine(systemInfos);
-            utilities.FontDefine(backPanel);
+            utilities.FontSet(this, pf);
+            utilities.FontSet(sheetsList, pf);
+            utilities.FontSet(addSheet, pf);
+            utilities.FontSet(systemInfos, pf);
+            utilities.FontSet(backPanel, pf);
 
-            DataRow table = con.getGame(idSystem).Rows[0];
-
-            Console.WriteLine(JsonConvert.SerializeObject(table));
+            DataRow table = con.getGame(IdGame).Rows[0];
 
             this.nameSystem.Text = table["Name"].ToString();
             this.descriptionSystem.Text = table["Description"].ToString();
@@ -50,7 +51,19 @@ namespace MasmorraDoMestre.View
             PictureBox profilePhoto = new PictureBox();
             PictureBox deletePicture = new PictureBox();
             PictureBox viewPicture = new PictureBox();
-            PictureBox editPicture = new PictureBox();
+
+            EventHandler onClickEvent = new EventHandler((sender, EventArgs) => {
+                
+            });
+
+            EventHandler viewPictureOnClickEvent = new EventHandler((sender, EventArgs) => {
+                try
+                {
+                    Sheet OpenSheet = new Sheet(IdGame, int.Parse(Data["Id"].ToString()), pf);
+                    OpenSheet.Show();
+                }
+                catch { }
+            });
 
             Image img = utilities.getImagePrefile(int.Parse(Data["Image"].ToString()));
 
@@ -59,7 +72,6 @@ namespace MasmorraDoMestre.View
             // 
             itemSheet.BackColor = Color.FromArgb(20,20,20);
             itemSheet.BorderStyle = BorderStyle.FixedSingle;
-            itemSheet.Controls.Add(editPicture);
             itemSheet.Controls.Add(viewPicture);
             itemSheet.Controls.Add(deletePicture);
             itemSheet.Controls.Add(name);
@@ -68,8 +80,9 @@ namespace MasmorraDoMestre.View
             itemSheet.Name = "itemSheet";
             itemSheet.Size = new Size(190, 190);
             itemSheet.TabIndex = 1;
+            itemSheet.Click += onClickEvent;
             itemSheet.Paint += new PaintEventHandler((sender, EventArgs) => {
-                utilities.FontDefine(itemSheet);
+                utilities.FontSet(itemSheet, pf);
             });
 
             // 
@@ -84,6 +97,7 @@ namespace MasmorraDoMestre.View
             name.TabIndex = 2;
             name.Text = Data["Name"].ToString();
             name.TextAlign = ContentAlignment.MiddleCenter;
+            name.Click += onClickEvent;
 
             // 
             // profilePhoto
@@ -113,35 +127,21 @@ namespace MasmorraDoMestre.View
             // 
             viewPicture.Cursor = Cursors.Hand;
             viewPicture.Image = global::MasmorraDoMestre.Properties.Resources.view;
-            viewPicture.Location = new Point(74, 161);
+            viewPicture.Location = new Point(150, 161);
             viewPicture.Name = "viewPicture";
             viewPicture.Size = new Size(35, 20);
             viewPicture.SizeMode = PictureBoxSizeMode.Zoom;
             viewPicture.TabIndex = 6;
             viewPicture.TabStop = false;
-
-            // 
-            // editPicture
-            // 
-            editPicture.Cursor = Cursors.Hand;
-            editPicture.Image = global::MasmorraDoMestre.Properties.Resources.edit;
-            editPicture.Location = new Point(150, 161);
-            editPicture.Name = "editPicture";
-            editPicture.Size = new Size(35, 20);
-            editPicture.SizeMode = PictureBoxSizeMode.Zoom;
-            editPicture.TabIndex = 7;
-            editPicture.TabStop = false;
+            viewPicture.Click += viewPictureOnClickEvent;
 
             this.sheetsList.Controls.Add(itemSheet);
         }
 
         private void InitializeList()
         {
-            DataTable table = con.getSheet(idSystem);
+            DataTable table = con.getSheet(IdGame);
             int locationX = 198, locationY = 3;
-
-
-            Console.WriteLine(JsonConvert.SerializeObject(table));
 
             for (int i = 0; i < table.Rows.Count; i++)
             {
@@ -158,12 +158,14 @@ namespace MasmorraDoMestre.View
                 }
 
             }
+
+            Console.WriteLine(JsonConvert.SerializeObject(table));
         }
 
         private void addSheet_Click(object sender, EventArgs e)
         {
         }
 
-        private void backToGameList_Click(object sender, EventArgs e) { utilities.GoMenu(this, (object obj) => { Application.Run(new GameList()); }); }
+        private void backToGameList_Click(object sender, EventArgs e) { utilities.GoMenu(this, (object obj) => { Application.Run(new GameList(pf)); }); }
     }
 }
