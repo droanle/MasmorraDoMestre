@@ -105,7 +105,6 @@
             this.addSheet.Padding = new System.Windows.Forms.Padding(5);
             this.addSheet.Size = new System.Drawing.Size(190, 190);
             this.addSheet.TabIndex = 0;
-            this.addSheet.Click += new System.EventHandler(this.addSheet_Click);
             // 
             // addSheetLabel
             // 
@@ -120,7 +119,7 @@
             this.addSheetLabel.TabIndex = 1;
             this.addSheetLabel.Text = "Adicionar nova ficha";
             this.addSheetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.addSheetLabel.Click += new System.EventHandler(this.addSheet_Click);
+            this.addSheetLabel.Click += new System.EventHandler(this.goToCreateSheet_Click);
             // 
             // addSheetPlus
             // 
@@ -135,7 +134,7 @@
             this.addSheetPlus.TabIndex = 0;
             this.addSheetPlus.Text = " +";
             this.addSheetPlus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.addSheetPlus.Click += new System.EventHandler(this.addSheet_Click);
+            this.addSheetPlus.Click += new System.EventHandler(this.goToCreateSheet_Click);
             // 
             // panel1
             // 

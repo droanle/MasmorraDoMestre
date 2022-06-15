@@ -191,5 +191,14 @@ namespace MasmorraDoMestre.View
                 Application.Run(new Main(pf));
             });
         }
+
+        private void configPanel_Click(object sender, EventArgs e)
+        {
+            utilities.GoMenu(this, (object obj) => {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new NewSystem(pf));
+            });
+        }
     }
 }

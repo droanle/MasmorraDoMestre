@@ -33,13 +33,15 @@ namespace MasmorraDoMestre.View
             utilities.FontSet(content, pf);
             utilities.FontSet(SecAttributes, pf);
 
+            exit_Click(new object(), new EventArgs());
+
             DataRow table = con.getSheetTarget(IdSheet);
 
             this.Text = table["Name"].ToString();
             this.profilePhoto.Image = utilities.getImagePrefile(int.Parse(table["Image"].ToString()));
-            this.nameLabel.Text = table["Name"].ToString();
-            this.descriptionLabel.Text = table["Description"].ToString();
-            this.typeLabel.Text = table["Type"].ToString();
+            this.nameLabel.Text = this.nameTextBox.Text = table["Name"].ToString();
+            this.descriptionLabel.Text = this.descriptionTextBox.Text = table["Description"].ToString();
+            this.typeLabel.Text = this.typeTextBox.Text = table["Type"].ToString();
             this.ifPlayerLabel.Text = Convert.ToBoolean(table["Player"].ToString()) ? "Esta ficha é de um player" : "Esta ficha é de um NPC";
 
         }
@@ -64,7 +66,7 @@ namespace MasmorraDoMestre.View
 
             Properties_List = JsonConvert.DeserializeObject<PropertiesList>(con.getProperties_List(IdGame));
 
-            foreach(ListValues propertieType in Properties_List.List)
+            foreach(PropertiesListValues propertieType in Properties_List.List)
             {
                 table = con.getProperties(IdSheet, propertieType.abbreviation);
 
@@ -82,7 +84,7 @@ namespace MasmorraDoMestre.View
 
             }
 
-            Console.WriteLine(JsonConvert.SerializeObject(Properties_List));
+            Console.WriteLine(JsonConvert.SerializeObject(table));
         }
 
         private void createListSecAttributes(int Y, DataRow Data)
@@ -118,7 +120,7 @@ namespace MasmorraDoMestre.View
                 attributeIscoreLabel.Show();
             }
 
-            EventHandler editValueBox = new System.EventHandler((object sender, EventArgs e) => {
+            EventHandler editValueBox = new EventHandler((object sender, EventArgs e) => {
                 Panel borderChangePanel = new Panel();
                 Panel changePanel = new Panel();
                 Panel cancelButton = new Panel();
@@ -135,9 +137,9 @@ namespace MasmorraDoMestre.View
                 int InternalCurrentValue = int.Parse(attributeIscoreLabel.Text.Split('/')[0]),
                        InternalMaxValue = int.Parse(attributeIscoreLabel.Text.Split('/')[1]);
 
-                EventHandler Close = new System.EventHandler((object senderC, EventArgs eC) => { this.Controls.Remove(borderChangePanel); });
+                EventHandler Close = new EventHandler((object senderC, EventArgs eC) => { this.Controls.Remove(borderChangePanel); });
 
-                EventHandler eOnChange = new System.EventHandler((object senderC, EventArgs eC) => {
+                EventHandler eOnChange = new EventHandler((object senderC, EventArgs eC) => {
                     try
                     {
                         int value = int.Parse(Regex.Replace(eValueTextBox.Text, @"[^\d]", "")),
@@ -153,7 +155,7 @@ namespace MasmorraDoMestre.View
                     }
                 });
 
-                EventHandler dOnChange = new System.EventHandler((object senderC, EventArgs eC) => {
+                EventHandler dOnChange = new EventHandler((object senderC, EventArgs eC) => {
                     try
                     {
                         int eValue = int.Parse(Regex.Replace(eValueTextBox.Text, @"[^\d]", "")),
@@ -175,7 +177,7 @@ namespace MasmorraDoMestre.View
 
                 });
 
-                EventHandler Save = new System.EventHandler((object senderC, EventArgs eC) => {
+                EventHandler Save = new EventHandler((object senderC, EventArgs eC) => {
                     int eValue, dValue;
 
                     eValue = dValue = 0;
@@ -412,7 +414,8 @@ namespace MasmorraDoMestre.View
                 dValueTextBox.Size = new Size(37, 23);
                 dValueTextBox.TabIndex = 11;
                 dValueTextBox.Text = InternalMaxValue.ToString();
-                
+                dValueTextBox.TextChanged += dOnChange;
+
                 // 
                 // itemTitleLabel
                 // 
@@ -556,7 +559,7 @@ namespace MasmorraDoMestre.View
 
         }
 
-        private void createListTypeProperties(int X, int Y, ListValues propertieType, DataTable Data)
+        private void createListTypeProperties(int X, int Y, PropertiesListValues propertieType, DataTable Data)
         {
             Panel propertiesPanel = new Panel();
             Label propertiesTypeNameLabel = new Label();
@@ -628,7 +631,74 @@ namespace MasmorraDoMestre.View
 
         }
 
-        private Panel createListProperties(int X, int Y, ListValues propertieType, DataRow Data)
+        private void descriptionLabel_DoubleClick(object sender, EventArgs e)
+        {
+            exit_Click(new object(), new EventArgs());
+            this.descriptionTextBox.Text = this.descriptionLabel.Text;
+            this.descriptionTextBox.Show();
+            this.descriptionSave.Show();
+            this.descriptionExit.Show();
+        }
+
+        private void nameLabel_DoubleClick(object sender, EventArgs e)
+        {
+            exit_Click(new object(), new EventArgs());
+            this.nameTextBox.Text = this.nameLabel.Text;
+            this.nameTextBox.Show();
+            this.nameSave.Show();
+            this.nameExit.Show();
+        }
+
+        private void typeLabel_DoubleClick(object sender, EventArgs e)
+        {
+            exit_Click(new object(), new EventArgs());
+            this.typeTextBox.Text = this.typeLabel.Text;
+            this.typeTextBox.Show();
+            this.typeSave.Show();
+            this.typeExit.Show();
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.nameTextBox.Hide();
+            this.nameSave.Hide();
+            this.nameExit.Hide();
+            this.typeTextBox.Hide();
+            this.typeSave.Hide();
+            this.typeExit.Hide();
+            this.descriptionTextBox.Hide();
+            this.descriptionSave.Hide();
+            this.descriptionExit.Hide();
+        }
+
+        private void typeSave_Click(object sender, EventArgs e)
+        {
+            if (con.setSheetsInfo(this.typeTextBox.Text, IdSheet, "Type"))
+            {
+                this.typeLabel.Text = this.typeTextBox.Text;
+                exit_Click(new object(), new EventArgs());
+            }
+        }
+
+        private void nameSave_Click(object sender, EventArgs e)
+        {
+            if (con.setSheetsInfo(this.nameTextBox.Text, IdSheet, "Name"))
+            {
+                this.nameLabel.Text = this.nameTextBox.Text;
+                exit_Click(new object(), new EventArgs());
+            }
+        }
+
+        private void descriptionSave_Click(object sender, EventArgs e)
+        {
+            if (con.setSheetsInfo(this.descriptionTextBox.Text, IdSheet, "Description"))
+            {
+                this.descriptionLabel.Text = this.descriptionTextBox.Text;
+                exit_Click(new object(), new EventArgs());
+            }
+        }
+
+        private Panel createListProperties(int X, int Y, PropertiesListValues propertieType, DataRow Data)
         {
             Panel ItemPropertiePanel = new Panel();
             Label propertieNameLabel = new Label();
@@ -636,17 +706,53 @@ namespace MasmorraDoMestre.View
 
             String DescriptionMassage = "Parte do grupo: \"" + propertieType.name + "\"  Abreviação: " + Data["Id"].ToString();
 
-            EventHandler editValueBox = new System.EventHandler((object sender, EventArgs e) => {
+            EventHandler editValueBox = new EventHandler((object sender, EventArgs e) => {
                 Panel borderChangePanel = new Panel();
                 Panel changePanel = new Panel();
                 Panel cancelButton = new Panel();
                 Panel alterButton = new Panel();
                 Label alterLabel = new Label();
-                Label itemTextBox = new Label();
+                Panel campoPanel = new Panel();
+                TextBox itemTextBox = new TextBox();
                 Label itemTitleLabel = new Label();
                 Label cancelLabel = new Label();
 
-                EventHandler Close = new System.EventHandler((object senderC, EventArgs eC) => { this.Controls.Remove(borderChangePanel); });
+                EventHandler Close = new EventHandler((object senderC, EventArgs eC) => { this.Controls.Remove(borderChangePanel); });
+
+                EventHandler onChange = new EventHandler((object senderC, EventArgs eC) => {
+                    try
+                    {
+                        int value = int.Parse(Regex.Replace(itemTextBox.Text, @"[^\d]", ""));
+
+                        if (value < 0) itemTextBox.Text = "0";
+                        else itemTextBox.Text = value.ToString();
+                    }
+                    catch
+                    {
+                        if (itemTextBox.Text != "") itemTextBox.Text = "0";
+                    }
+                });
+
+                EventHandler Save = new EventHandler((object senderC, EventArgs eC) => {
+
+                    int value = 0;
+
+                    try
+                    {
+                        value = int.Parse(Regex.Replace(itemTextBox.Text, @"[^\d]", ""));
+                    }
+                    catch
+                    {
+                        if (itemTextBox.Text != "") value = 0;
+                    }
+
+                    if (con.setPropertiesValue(value, IdSheet, Data["Id"].ToString()))
+                    {
+                        propertieValueLabel.Text = value.ToString();
+                    }
+
+                    this.Controls.Remove(borderChangePanel);
+                });
 
                 // 
                 // borderChangePanel
@@ -664,14 +770,15 @@ namespace MasmorraDoMestre.View
                 // 
                 changePanel.BackColor = SystemColors.ControlDarkDark;
                 changePanel.BorderStyle = BorderStyle.FixedSingle;
-                changePanel.Controls.Add(cancelButton);
+                changePanel.Controls.Add(campoPanel);
                 changePanel.Controls.Add(alterButton);
-                changePanel.Controls.Add(itemTextBox);
+                changePanel.Controls.Add(cancelButton);
                 changePanel.Controls.Add(itemTitleLabel);
                 changePanel.Location = new Point(4, 4);
                 changePanel.Name = "changePanel";
                 changePanel.Size = new Size(250, 150);
                 changePanel.TabIndex = 11;
+                changePanel.Paint += new PaintEventHandler((a, z) => { utilities.FontSet(changePanel, pf); });
 
                 // 
                 // cancelButton
@@ -687,6 +794,7 @@ namespace MasmorraDoMestre.View
                 cancelButton.Size = new Size(90, 35);
                 cancelButton.TabIndex = 10;
                 cancelButton.Click += Close;
+                cancelButton.Paint += new PaintEventHandler((a, z) => { utilities.FontSet(cancelButton, pf); });
 
                 // 
                 // cancelLabel
@@ -719,6 +827,8 @@ namespace MasmorraDoMestre.View
                 alterButton.Padding = new Padding(10);
                 alterButton.Size = new Size(90, 35);
                 alterButton.TabIndex = 9;
+                alterButton.Click += Save;
+                alterButton.Paint += new PaintEventHandler((a, z) => { utilities.FontSet(alterButton, pf); });
 
                 // 
                 // alterLabel
@@ -736,18 +846,32 @@ namespace MasmorraDoMestre.View
                 alterLabel.TabIndex = 4;
                 alterLabel.Text = "ALTERAR";
                 alterLabel.TextAlign = ContentAlignment.MiddleCenter;
+                alterLabel.Click += Save;
+
+                // 
+                // campoPanel
+                // 
+                campoPanel.BackColor = Color.WhiteSmoke;
+                campoPanel.BorderStyle = BorderStyle.FixedSingle;
+                campoPanel.Controls.Add(itemTextBox);
+                campoPanel.Location = new Point(90, 55);
+                campoPanel.Name = "campoPanel";
+                campoPanel.Padding = new Padding(2);
+                campoPanel.Size = new Size(70, 35);
+                campoPanel.TabIndex = 14;
 
                 // 
                 // itemTextBox
                 // 
-                itemTextBox.BorderStyle = BorderStyle.FixedSingle;
+                itemTextBox.BorderStyle = BorderStyle.None;
                 itemTextBox.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-                itemTextBox.Location = new Point(110, 60);
+                itemTextBox.Location = new Point(5, 5);
                 itemTextBox.Name = "itemTextBox";
-                itemTextBox.Size = new Size(30, 30);
+                itemTextBox.Size = new Size(58, 23);
                 itemTextBox.TabIndex = 1;
-                itemTextBox.Text = "1";
-                itemTextBox.TextAlign = (ContentAlignment)HorizontalAlignment.Center;
+                itemTextBox.Text = propertieValueLabel.Text;
+                itemTextBox.TextAlign = HorizontalAlignment.Center;
+                itemTextBox.TextChanged += onChange;
 
                 // 
                 // itemTitleLabel
@@ -758,7 +882,7 @@ namespace MasmorraDoMestre.View
                 itemTitleLabel.Name = "itemTitleLabel";
                 itemTitleLabel.Size = new Size(248, 47);
                 itemTitleLabel.TabIndex = 0;
-                itemTitleLabel.Text = "[Titulo da alteração]";
+                itemTitleLabel.Text = Data["Name"].ToString();
                 itemTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
 
                 this.Controls.Add(borderChangePanel);
@@ -777,6 +901,7 @@ namespace MasmorraDoMestre.View
             ItemPropertiePanel.Padding = new Padding(5);
             ItemPropertiePanel.Size = new Size(165, 133);
             ItemPropertiePanel.TabIndex = 1;
+            ItemPropertiePanel.DoubleClick += editValueBox;
             ItemPropertiePanel.MouseEnter += new EventHandler((sender, EventArgs) => {
                 ToolTip toolTip1 = new ToolTip();
                 toolTip1.ShowAlways = true;
@@ -798,6 +923,7 @@ namespace MasmorraDoMestre.View
             propertieNameLabel.TabIndex = 13;
             propertieNameLabel.Text = Data["Name"].ToString();
             propertieNameLabel.TextAlign = ContentAlignment.MiddleCenter;
+            propertieNameLabel.DoubleClick += editValueBox;
             propertieNameLabel.MouseEnter += new EventHandler((sender, EventArgs) => {
                 ToolTip toolTip1 = new ToolTip();
                 toolTip1.ShowAlways = true;
@@ -818,6 +944,7 @@ namespace MasmorraDoMestre.View
             propertieValueLabel.TabIndex = 14;
             propertieValueLabel.Text = Data["Value"].ToString();
             propertieValueLabel.TextAlign = ContentAlignment.MiddleCenter;
+            propertieValueLabel.DoubleClick += editValueBox;
             propertieValueLabel.MouseEnter += new EventHandler((sender, EventArgs) => {
                 ToolTip toolTip1 = new ToolTip();
                 toolTip1.ShowAlways = true;

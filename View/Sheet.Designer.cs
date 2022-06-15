@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.profilePhoto = new System.Windows.Forms.PictureBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.content = new System.Windows.Forms.Panel();
@@ -42,20 +41,26 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ifPlayerLabel = new System.Windows.Forms.Label();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhoto)).BeginInit();
+            this.descriptionTextBox = new System.Windows.Forms.RichTextBox();
+            this.nameTextBox = new System.Windows.Forms.RichTextBox();
+            this.typeTextBox = new System.Windows.Forms.RichTextBox();
+            this.nameSave = new System.Windows.Forms.PictureBox();
+            this.typeSave = new System.Windows.Forms.PictureBox();
+            this.descriptionSave = new System.Windows.Forms.PictureBox();
+            this.profilePhoto = new System.Windows.Forms.PictureBox();
+            this.nameExit = new System.Windows.Forms.PictureBox();
+            this.typeExit = new System.Windows.Forms.PictureBox();
+            this.descriptionExit = new System.Windows.Forms.PictureBox();
             this.content.SuspendLayout();
             this.SecAttributes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nameSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typeSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.descriptionSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nameExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typeExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.descriptionExit)).BeginInit();
             this.SuspendLayout();
-            // 
-            // profilePhoto
-            // 
-            this.profilePhoto.Image = global::MasmorraDoMestre.Properties.Resources.image2;
-            this.profilePhoto.Location = new System.Drawing.Point(12, 12);
-            this.profilePhoto.Name = "profilePhoto";
-            this.profilePhoto.Size = new System.Drawing.Size(134, 135);
-            this.profilePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.profilePhoto.TabIndex = 1;
-            this.profilePhoto.TabStop = false;
             // 
             // nameLabel
             // 
@@ -68,6 +73,7 @@
             this.nameLabel.TabIndex = 3;
             this.nameLabel.Text = "[Nome do personagem]";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nameLabel.DoubleClick += new System.EventHandler(this.nameLabel_DoubleClick);
             // 
             // descriptionLabel
             // 
@@ -81,6 +87,7 @@
             this.descriptionLabel.Size = new System.Drawing.Size(333, 138);
             this.descriptionLabel.TabIndex = 4;
             this.descriptionLabel.Text = "Descrição: [Descrição do personagem]";
+            this.descriptionLabel.DoubleClick += new System.EventHandler(this.descriptionLabel_DoubleClick);
             // 
             // content
             // 
@@ -146,6 +153,7 @@
             this.typeLabel.TabIndex = 7;
             this.typeLabel.Text = "[Raça do personagem]";
             this.typeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.typeLabel.DoubleClick += new System.EventHandler(this.typeLabel_DoubleClick);
             // 
             // label3
             // 
@@ -191,11 +199,129 @@
             this.notifyIcon.Text = "notifyIcon";
             this.notifyIcon.Visible = true;
             // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionTextBox.Location = new System.Drawing.Point(439, 9);
+            this.descriptionTextBox.MaxLength = 5000000;
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(333, 138);
+            this.descriptionTextBox.TabIndex = 11;
+            this.descriptionTextBox.Text = "[Descrição do personagem]";
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameTextBox.Location = new System.Drawing.Point(216, 12);
+            this.nameTextBox.MaxLength = 200;
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(218, 26);
+            this.nameTextBox.TabIndex = 12;
+            this.nameTextBox.Text = "[Nome do personagem]";
+            // 
+            // typeTextBox
+            // 
+            this.typeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typeTextBox.Location = new System.Drawing.Point(216, 68);
+            this.typeTextBox.MaxLength = 100;
+            this.typeTextBox.Name = "typeTextBox";
+            this.typeTextBox.Size = new System.Drawing.Size(218, 26);
+            this.typeTextBox.TabIndex = 13;
+            this.typeTextBox.Text = "[Raça do personagem]";
+            // 
+            // nameSave
+            // 
+            this.nameSave.Image = global::MasmorraDoMestre.Properties.Resources.memoryCard;
+            this.nameSave.Location = new System.Drawing.Point(413, 18);
+            this.nameSave.Margin = new System.Windows.Forms.Padding(1);
+            this.nameSave.Name = "nameSave";
+            this.nameSave.Size = new System.Drawing.Size(15, 15);
+            this.nameSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.nameSave.TabIndex = 16;
+            this.nameSave.TabStop = false;
+            this.nameSave.Click += new System.EventHandler(this.nameSave_Click);
+            // 
+            // typeSave
+            // 
+            this.typeSave.Image = global::MasmorraDoMestre.Properties.Resources.memoryCard;
+            this.typeSave.Location = new System.Drawing.Point(413, 73);
+            this.typeSave.Margin = new System.Windows.Forms.Padding(1);
+            this.typeSave.Name = "typeSave";
+            this.typeSave.Size = new System.Drawing.Size(15, 15);
+            this.typeSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.typeSave.TabIndex = 15;
+            this.typeSave.TabStop = false;
+            this.typeSave.Click += new System.EventHandler(this.typeSave_Click);
+            // 
+            // descriptionSave
+            // 
+            this.descriptionSave.Image = global::MasmorraDoMestre.Properties.Resources.memoryCard;
+            this.descriptionSave.Location = new System.Drawing.Point(750, 126);
+            this.descriptionSave.Margin = new System.Windows.Forms.Padding(1);
+            this.descriptionSave.Name = "descriptionSave";
+            this.descriptionSave.Size = new System.Drawing.Size(15, 15);
+            this.descriptionSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.descriptionSave.TabIndex = 14;
+            this.descriptionSave.TabStop = false;
+            this.descriptionSave.Click += new System.EventHandler(this.descriptionSave_Click);
+            // 
+            // profilePhoto
+            // 
+            this.profilePhoto.Image = global::MasmorraDoMestre.Properties.Resources.image2;
+            this.profilePhoto.Location = new System.Drawing.Point(12, 12);
+            this.profilePhoto.Name = "profilePhoto";
+            this.profilePhoto.Size = new System.Drawing.Size(135, 135);
+            this.profilePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.profilePhoto.TabIndex = 1;
+            this.profilePhoto.TabStop = false;
+            // 
+            // nameExit
+            // 
+            this.nameExit.Image = global::MasmorraDoMestre.Properties.Resources.x_icon;
+            this.nameExit.Location = new System.Drawing.Point(394, 18);
+            this.nameExit.Name = "nameExit";
+            this.nameExit.Size = new System.Drawing.Size(15, 15);
+            this.nameExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.nameExit.TabIndex = 17;
+            this.nameExit.TabStop = false;
+            this.nameExit.Click += new System.EventHandler(this.exit_Click);
+            // 
+            // typeExit
+            // 
+            this.typeExit.Image = global::MasmorraDoMestre.Properties.Resources.x_icon;
+            this.typeExit.Location = new System.Drawing.Point(394, 73);
+            this.typeExit.Name = "typeExit";
+            this.typeExit.Size = new System.Drawing.Size(15, 15);
+            this.typeExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.typeExit.TabIndex = 18;
+            this.typeExit.TabStop = false;
+            this.typeExit.Click += new System.EventHandler(this.exit_Click);
+            // 
+            // descriptionExit
+            // 
+            this.descriptionExit.Image = global::MasmorraDoMestre.Properties.Resources.x_icon;
+            this.descriptionExit.Location = new System.Drawing.Point(731, 126);
+            this.descriptionExit.Name = "descriptionExit";
+            this.descriptionExit.Size = new System.Drawing.Size(15, 15);
+            this.descriptionExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.descriptionExit.TabIndex = 19;
+            this.descriptionExit.TabStop = false;
+            this.descriptionExit.Click += new System.EventHandler(this.exit_Click);
+            // 
             // Sheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.descriptionExit);
+            this.Controls.Add(this.typeExit);
+            this.Controls.Add(this.nameExit);
+            this.Controls.Add(this.nameSave);
+            this.Controls.Add(this.typeSave);
+            this.Controls.Add(this.descriptionSave);
+            this.Controls.Add(this.typeTextBox);
+            this.Controls.Add(this.nameTextBox);
+            this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.profilePhoto);
             this.Controls.Add(this.ifPlayerLabel);
             this.Controls.Add(this.nameLabel);
@@ -209,9 +335,15 @@
             this.Name = "Sheet";
             this.Text = "Ficha";
             this.Load += new System.EventHandler(this.Sheet_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhoto)).EndInit();
             this.content.ResumeLayout(false);
             this.SecAttributes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nameSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typeSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.descriptionSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nameExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typeExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.descriptionExit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,5 +363,14 @@
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.RichTextBox descriptionTextBox;
+        private System.Windows.Forms.RichTextBox nameTextBox;
+        private System.Windows.Forms.RichTextBox typeTextBox;
+        private System.Windows.Forms.PictureBox descriptionSave;
+        private System.Windows.Forms.PictureBox typeSave;
+        private System.Windows.Forms.PictureBox nameSave;
+        private System.Windows.Forms.PictureBox nameExit;
+        private System.Windows.Forms.PictureBox typeExit;
+        private System.Windows.Forms.PictureBox descriptionExit;
     }
 }

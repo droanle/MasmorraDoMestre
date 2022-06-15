@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MasmorraDoMestre.Model
 {
-    public class ListValues
+    public class PropertiesListValues
     {
         public string name { get; set; }
         public string description { get; set; }
@@ -15,8 +15,9 @@ namespace MasmorraDoMestre.Model
 
     public class PropertiesList
     {
-        private List<ListValues> values = new List<ListValues>();
-        public ListValues ListValues { set => values.Add(value); }
-        public List<ListValues> List { get { return values; } }
+        public List<PropertiesListValues> values = new List<PropertiesListValues>();
+
+        public PropertiesListValues ListValues { set => values.Add(value); }
+        public List<PropertiesListValues> List { get { return values; } }
     }
 }

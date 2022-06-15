@@ -84,13 +84,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Conection.cs" />
+    <Compile Include="Controller\PropertiesFormatter.cs" />
+    <Compile Include="Controller\SystemFormatter.cs" />
+    <Compile Include="Model\AtribultiColor.cs" />
     <Compile Include="Model\PropertiesList.cs" />
+    <Compile Include="Model\SecAttributesList.cs" />
     <Compile Include="Model\Utilities.cs" />
     <Compile Include="View\Confg.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Confg.Designer.cs">
       <DependentUpon>Confg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CreateSheet.Designer.cs">
+      <DependentUpon>CreateSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GameList.cs">
       <SubType>Form</SubType>
@@ -112,6 +122,12 @@
     <Compile Include="testes.Designer.cs">
       <DependentUpon>testes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\NewSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NewSystem.Designer.cs">
+      <DependentUpon>NewSystem.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Sheet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +140,12 @@
     <Compile Include="View\SystemForm.Designer.cs">
       <DependentUpon>SystemForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Confg.resx">
+      <DependentUpon>Confg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CreateSheet.resx">
+      <DependentUpon>CreateSheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GameList.resx">
       <DependentUpon>GameList.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +164,9 @@
     </Compile>
     <EmbeddedResource Include="testes.resx">
       <DependentUpon>testes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\NewSystem.resx">
+      <DependentUpon>NewSystem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Sheet.resx">
       <DependentUpon>Sheet.cs</DependentUpon>
@@ -179,8 +204,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\ava_02.png" />
     <Content Include="Resources\Data\comands_create_tables.sql" />
     <Content Include="Resources\Data\comands_insert_for_tests.sql" />
+    <None Include="Resources\setaCima.png" />
+    <None Include="Resources\setaBaixo.png" />
+    <None Include="Resources\x-icon.png" />
+    <None Include="Resources\memoryCard.jpg" />
     <None Include="Resources\view.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\delete.png" />

@@ -61,11 +61,11 @@ namespace MasmorraDoMestre.Model
         {
             switch (v)
             {
-                case 1: return global::MasmorraDoMestre.Properties.Resources.image1; break;
-                case 2: return global::MasmorraDoMestre.Properties.Resources.image2; break;
-                case 3: return global::MasmorraDoMestre.Properties.Resources.image3; break;
-                case 4: return global::MasmorraDoMestre.Properties.Resources.image4; break;
-                default: return global::MasmorraDoMestre.Properties.Resources.image5; break;
+                case 1: return Properties.Resources.image1; break;
+                case 2: return Properties.Resources.image2; break;
+                case 3: return Properties.Resources.image3; break;
+                case 4: return Properties.Resources.image4; break;
+                default: return Properties.Resources.image5; break;
             };
         }
 

@@ -165,6 +165,26 @@ namespace MasmorraDoMestre.Controller
             return querySelect("SELECT * FROM Sheets WHERE Source_Id=" + i);
         }
 
+        public Boolean deleteSheet(int i)
+        {
+            try
+            {
+                conectar();
+                using (var cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Sheets Where Id=@Id";
+                    cmd.Parameters.AddWithValue("@Id", i);
+                    cmd.ExecuteNonQuery();
+                }
+                desconectar();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        
         public DataRow getSheetTarget(int i)
         {
             return querySelect("SELECT * FROM Sheets WHERE Id=" + i).Rows[0];
@@ -223,6 +243,104 @@ namespace MasmorraDoMestre.Controller
                 return true;
             }
             catch (Exception ex) { desconectar(); return false; }
+        }
+
+        public Boolean setSheetsInfo(string value, int OwnerId, string column)
+        {
+            try
+            {
+                using (var cmd = con.CreateCommand())
+                {
+                    conectar();
+                    cmd.CommandText = "UPDATE Sheets SET " + column + "=@Value WHERE Id = @OwnerId ;";
+                    cmd.Parameters.AddWithValue("@Value", value);
+                    cmd.Parameters.AddWithValue("@OwnerId", OwnerId);
+                    cmd.ExecuteNonQuery();
+                    desconectar();
+                }
+
+                return true;
+            }
+            catch (Exception ex) { desconectar(); return false; }
+        }
+
+        public Boolean createSheet(string name, string description, string type, int image, Boolean player, int IdGame)
+        {
+            SQLiteCommand cmd = con.CreateCommand();
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+            int IdSheets;
+            try
+            {
+
+                conectar();
+
+                cmd.CommandText = "INSERT INTO Sheets(Name, Description, Type, Image, Player, Source_Id) VALUES( @Name, @Description,  @Type,  @Image, @Player, @Source_Id );";
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Description", description);
+                cmd.Parameters.AddWithValue("@Type", type);
+                cmd.Parameters.AddWithValue("@Image", image);
+                cmd.Parameters.AddWithValue("@Player", player);
+                cmd.Parameters.AddWithValue("@Source_Id", IdGame);
+                cmd.ExecuteNonQuery();
+                
+
+                cmd.CommandText = "SELECT MAX(Id)  FROM Sheets";
+                da = new SQLiteDataAdapter(cmd.CommandText, con);
+                da.Fill(dt);
+
+                Console.WriteLine(JsonConvert.SerializeObject(dt));
+
+                IdSheets = int.Parse(dt.Rows[0]["MAX(Id)"].ToString());
+
+
+                Console.WriteLine(JsonConvert.SerializeObject(IdSheets));
+
+                da = null;
+                dt = null;
+                dt = new DataTable();
+
+                cmd.CommandText = "SELECT Id FROM Properties WHERE Owner_Fk_Id=" + IdGame;
+                da = new SQLiteDataAdapter(cmd.CommandText, con);
+                da.Fill(dt);
+
+
+                Console.WriteLine(JsonConvert.SerializeObject(dt));
+                Console.WriteLine(dt.Rows.Count);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    cmd.CommandText = "INSERT INTO PropertiesValue (Id_Properties, Value, Owner_Id) VALUES( '" + dt.Rows[i]["Id"] + "', '0', " + IdSheets + " ); ";
+                    Console.WriteLine("INSERT INTO PropertiesValue (Id_Properties, Value, Owner_Id) VALUES( '" + dt.Rows[i]["Id"] + "', '0', " + IdSheets + " ); ");
+                    cmd.ExecuteNonQuery();
+                }
+
+                da = null;
+                dt = null;
+                dt = new DataTable();
+
+                cmd.CommandText = "SELECT Id FROM SecAttributes WHERE Owner_Fk_Id=" + IdGame;
+                da = new SQLiteDataAdapter(cmd.CommandText, con);
+                da.Fill(dt);
+
+                Console.WriteLine(JsonConvert.SerializeObject(dt));
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    cmd.CommandText = "INSERT INTO SecAttributesValue (Id_Attributes, Value, Owner_Id) VALUES( '" + dt.Rows[i]["Id"] + "', '100/100', " + IdSheets + " ); ";
+
+                    cmd.ExecuteNonQuery();
+                }
+
+
+                desconectar();
+
+                return true;
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex);
+                desconectar(); return false; }              
+            
         }
 
     }

@@ -21,6 +21,8 @@ namespace MasmorraDoMestre.View
         Conection con = new Conection();
         PrivateFontCollection pf = null;
         int IdGame;
+        int image = 1;
+        Boolean player = false;
 
         public SystemForm(int IdGame, PrivateFontCollection pf)
         {
@@ -64,6 +66,15 @@ namespace MasmorraDoMestre.View
                 }
                 catch { }
             });
+
+            EventHandler deleteSheetOnClickEvent = new EventHandler((sender, EventArgs) => {
+                if (con.deleteSheet(int.Parse(Data["Id"].ToString())))
+                {
+                    utilities.GoMenu(this, (object obj) => { Application.Run(new SystemForm(IdGame, pf)); });
+                }
+            });
+
+            
 
             Image img = utilities.getImagePrefile(int.Parse(Data["Image"].ToString()));
 
@@ -121,6 +132,7 @@ namespace MasmorraDoMestre.View
             deletePicture.SizeMode = PictureBoxSizeMode.Zoom;
             deletePicture.TabIndex = 3;
             deletePicture.TabStop = false;
+            deletePicture.Click += deleteSheetOnClickEvent;
 
             // 
             // viewPicture
@@ -162,10 +174,9 @@ namespace MasmorraDoMestre.View
             Console.WriteLine(JsonConvert.SerializeObject(table));
         }
 
-        private void addSheet_Click(object sender, EventArgs e)
-        {
-        }
+        private void goToCreateSheet_Click(object sender, EventArgs e) { utilities.GoMenu(this, (object obj) => { Application.Run(new CreateSheet(IdGame, pf)); }); }
 
         private void backToGameList_Click(object sender, EventArgs e) { utilities.GoMenu(this, (object obj) => { Application.Run(new GameList(pf)); }); }
+
     }
 }

@@ -31,3 +31,6 @@ D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\bin\Debug\Newtonsoft.Json.dll
 D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\bin\Debug\Newtonsoft.Json.xml
 D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\obj\Debug\MasmorraDoMestre.View.SystemForm.resources
 D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\obj\Debug\MasmorraDoMestre.View.Sheet.resources
+D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\obj\Debug\MasmorraDoMestre.View.CreateSheet.resources
+D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\obj\Debug\MasmorraDoMestre.View.NewSystem.resources
+D:\Documentos\MasmorraDoMestre\MasmorraDoMestre\obj\Debug\MasmorraDoMestre.View.Confg.resources

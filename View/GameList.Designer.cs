@@ -177,6 +177,7 @@
             this.configPanel.Padding = new System.Windows.Forms.Padding(20);
             this.configPanel.Size = new System.Drawing.Size(240, 59);
             this.configPanel.TabIndex = 7;
+            this.configPanel.Click += new System.EventHandler(this.configPanel_Click);
             // 
             // config
             // 
