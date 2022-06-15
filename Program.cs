@@ -21,7 +21,7 @@ namespace MasmorraDoMestre
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NewSystem(pf));
+            Application.Run(new Main(pf));
         }
     }
 }

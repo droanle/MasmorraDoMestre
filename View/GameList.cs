@@ -34,8 +34,8 @@ namespace MasmorraDoMestre.View
         private void GameList_Load(object sender, EventArgs e)
         {
             utilities.FontSet(this, pf);
-            utilities.FontSet(configPanel, pf);
-            utilities.FontSet(deletePanel, pf);
+            //utilities.FontSet(configPanel, pf);
+            //utilities.FontSet(deletePanel, pf);
             utilities.FontSet(systemInfo, pf);
             utilities.FontSet(joinPanel, pf);
         }
